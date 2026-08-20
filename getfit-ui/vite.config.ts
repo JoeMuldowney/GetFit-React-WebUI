@@ -11,7 +11,14 @@ export default defineConfig({
     babel({ presets: [reactCompilerPreset()] }),
     tailwindcss(),
   ],
-   resolve: {
+
+  server: {
+    host: '0.0.0.0',
+    port: 5173,
+    allowedHosts: ['forgevitahq.com', 'www.forgevitahq.com'],
+  },
+
+  resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
