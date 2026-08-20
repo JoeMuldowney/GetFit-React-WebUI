@@ -17,6 +17,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
+            mkdir -p /var/www/forgevitahq
             cd /var/www/forgevitahq
             git pull origin main
             docker compose up -d --build
