@@ -1,6 +1,6 @@
 export async function RegUser(uname, pword, pwordverify, fname, lname, email) {
 
-        const response = await fetch("https://forgevitahq/api/addmember", {
+        const response = await fetch("https://forgevitahq.com/api/addmember", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
