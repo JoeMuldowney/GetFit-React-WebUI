@@ -8,7 +8,7 @@ interface LoginResponse {
 
 export async function loginUser(username: string, password: string): Promise<LoginResponse> {
     const payload: LoginPayload = { username, password };
-    const response = await fetch("http://localhost:8000/findmember", {
+    const response = await fetch("http://forgevitahq/api/findmember", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"

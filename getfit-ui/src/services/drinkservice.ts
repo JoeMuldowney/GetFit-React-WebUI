@@ -1,7 +1,7 @@
 import { apiFetch } from "@/utils/apifetch";
 
 export const createDrink = async (payload) => {
-  return apiFetch("http://localhost:8000/meal", {
+  return apiFetch("http://forgevitahq/api/meal", {
     method: "POST",
     body: JSON.stringify(payload),
   });

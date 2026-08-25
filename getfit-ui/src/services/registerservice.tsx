@@ -1,6 +1,6 @@
 export async function RegUser(uname, pword, pwordverify, fname, lname, email) {
 
-        const response = await fetch("http://localhost:8000/addmember", {
+        const response = await fetch("http://forgevitahq/api/addmember", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
