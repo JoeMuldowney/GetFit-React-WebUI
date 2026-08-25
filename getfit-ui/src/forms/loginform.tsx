@@ -45,7 +45,7 @@ return (
     <div className="flex justify-center items-center p-4">
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader>
-          <CardTitle className="text-2xl font-bold">GetFit ~ StayFit</CardTitle>
+          <CardTitle className="text-2xl font-bold">Forge Vitality HQ</CardTitle>
           <CardDescription>Enter your credentials to access your fitness panel</CardDescription>
         </CardHeader>
         <CardContent>
