@@ -1,24 +1,50 @@
-# =========================================
-# Stage: Development (Vite React.js App)
-# =========================================
 ARG NODE_VERSION=24.14.0-alpine
- 
+
+# =========================================
+# Development
+# =========================================
 FROM node:${NODE_VERSION} AS dev
- 
-# Set working directory inside the container
+
 WORKDIR /app
- 
-# Copy package files
+
 COPY getfit-ui/package*.json ./
- 
-# Install dependencies
+
 RUN npm ci
- 
-# Copy rest of the source code
+
 COPY getfit-ui/ .
- 
-# Expose Vite dev server port
+
 EXPOSE 5173
- 
-# Run Vite in dev mode, accessible outside the container
+
 CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+
+
+# =========================================
+# Production Build
+# =========================================
+FROM node:${NODE_VERSION} AS build
+
+WORKDIR /app
+
+COPY getfit-ui/package*.json ./
+
+RUN npm ci
+
+COPY getfit-ui/ .
+
+RUN npm run build
+
+
+# =========================================
+# Production
+# =========================================
+FROM node:${NODE_VERSION} AS production
+
+WORKDIR /app
+
+RUN npm install -g serve
+
+COPY --from=build /app/dist ./dist
+
+EXPOSE 3000
+
+CMD ["serve", "-s", "dist", "-l", "3000"]
