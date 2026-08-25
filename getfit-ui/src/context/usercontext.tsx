@@ -37,7 +37,7 @@ export function UserProvider({ children }: UserProviderProps) {
     }
 
     try {
-      const res = await fetch("https://forgevitahq.com/me", {
+      const res = await fetch("https://forgevitahq.com/api/me", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
