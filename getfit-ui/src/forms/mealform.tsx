@@ -1,6 +1,6 @@
-import { useContext } from "react";
+//import { useContext } from "react";
 import type { SyntheticEvent, ChangeEvent} from "react";
-import { useUser, UserContext } from "@/context/usercontext";
+//import { useUser, UserContext } from "@/context/usercontext";
 import {Button} from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import {useNutritionRows} from "@/hooks/nutritionhook";
@@ -11,7 +11,7 @@ function AddMeal() {
 
   const navigate = useNavigate();
 
-  const { user } = useContext(UserContext);
+  //const { user } = useContext(UserContext);
 
   const {
     items: food,
@@ -35,8 +35,12 @@ function AddMeal() {
       await createMeal(payload);
       navigate("/home");
     } catch (err) {
-      alert(err.message || "Failed to save meal");
-    }
+        if (err instanceof Error) {
+          alert(err.message);
+        } else {
+          alert("Failed to save food");
+        }
+      }
   };
 
 

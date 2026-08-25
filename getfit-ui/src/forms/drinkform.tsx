@@ -1,6 +1,6 @@
-import { useContext } from "react";
+//import { useContext } from "react";
 import type { SyntheticEvent, ChangeEvent} from "react";
-import { useUser, UserContext } from "@/context/usercontext";
+//import { useUser, UserContext } from "@/context/usercontext";
 import {Button} from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import {useNutritionRows} from "@/hooks/nutritionhook";
@@ -10,7 +10,7 @@ import { createDrink } from "@/services/drinkservice";
 function AddDrink() {
   const navigate = useNavigate();
 
-  const { user } = useContext(UserContext);
+  //const { user } = useContext(UserContext);
 
   const {
     items: drink,
@@ -34,7 +34,11 @@ const handleSubmit = async (e: SyntheticEvent<HTMLFormElement>): Promise<void> =
         await createDrink(payload);
         navigate("/home");
       } catch (err) {
-        alert(err.message || "Failed to save meal");
+        if (err instanceof Error) {
+          alert(err.message);
+        } else {
+          alert("Failed to save drink");
+        }
       }
     };
 
@@ -98,7 +102,7 @@ const handleSubmit = async (e: SyntheticEvent<HTMLFormElement>): Promise<void> =
       </button>
 
                     
-       <Button>Save</Button>             
+       <Button type="submit">Save</Button>            
         </form>
     </div>
     );

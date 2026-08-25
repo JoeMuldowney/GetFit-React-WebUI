@@ -16,12 +16,13 @@ function RegisterForm(){
     const [email, setEmail] = useState<string>("");   
     const [error, setError] = useState<string>("");
     const [success, setSuccess] = useState<string>("");
+
     const handleSubmit = async (e: SyntheticEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
           setError("");
             setSuccess("");
         try {
-            const data = await RegUser(
+            await RegUser(
             uname,
             pword,
             pwordverify,
@@ -31,8 +32,12 @@ function RegisterForm(){
             );
 
             setSuccess("Account created successfully!");
-        } catch (err) {
-            setError(err.message || "Registration failed");
+        }catch (err) {
+          if (err instanceof Error) {
+            setError(err.message);
+          } else {
+            setError("Failed to register");
+          }
         }
         };
     return(

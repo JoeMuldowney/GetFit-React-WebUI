@@ -1,6 +1,12 @@
 import { useNavigate } from "react-router-dom";
+import type { ReactNode } from "react";
 
-function LinkButton({ to, children }) {
+interface LinkButtonProps {
+  to: string;
+  children: ReactNode;
+}
+
+function LinkButton({ to, children }: LinkButtonProps) {
   const navigate = useNavigate();
 
   return (

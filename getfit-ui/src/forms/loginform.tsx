@@ -33,8 +33,12 @@ function LoginForm(){
             navigate("/home");
             setSuccess("Login successfull!");
         } catch (err) {
-            setError(err.message || "Login failed");
+        if (err instanceof Error) {
+          alert(err.message);
+        } else {
+          alert("Login failed");
         }
+      }
         };
 
 return (

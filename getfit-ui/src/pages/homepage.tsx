@@ -1,11 +1,10 @@
 
 import LinkButton from "@/components/linkbtn";
-import { useContext } from "react";
-import { UserContext } from "../context/usercontext";
+import { useUser } from "@/context/usercontext";
 
 function Home() {
 
-    const { user } = useContext(UserContext);
+   const { user } = useUser();
 
     if (!user) return <div>Loading...</div>;
     return (
